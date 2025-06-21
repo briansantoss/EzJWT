@@ -13,13 +13,11 @@ test_cases = [
     (b'any carnal pleasure.', urlsafe_b64encode(b'any carnal pleasure.').rstrip(b'=')),
 ]
 
-@pytest.mark.parametrize('inpt, expected', test_cases)
-def test_encode(inpt, expected):
-    encoded = base64url_encode(inpt)
-    assert encoded == expected, f'Expected {expected}, got {encoded}'
+@pytest.mark.parametrize('original, encoded', test_cases)
+def test_encode(original, encoded):
+    assert base64url_encode(original) == encoded
 
 
-@pytest.mark.parametrize('expected, inpt', test_cases)
-def test_decode(expected, inpt):
-    decoded = base64url_decode(inpt)
-    assert decoded == expected, f'Expected {expected}, got {decoded}'
+@pytest.mark.parametrize('decoded, original', test_cases)
+def test_decode(decoded, original):
+    assert  base64url_decode(original) == decoded
