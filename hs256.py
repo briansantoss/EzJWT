@@ -17,4 +17,4 @@ def hs256(key: bytes, message: bytes) -> bytes:
     return sha256_hash(xor(key, opad) + inner)
 
 def xor(x: bytes, y: bytes) -> bytes:
-    return bytes(a ^b for a, b in zip(x, y))
+    return bytes(a ^ b for a, b in zip(x, y))
